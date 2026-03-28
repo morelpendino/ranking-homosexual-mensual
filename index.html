@@ -13,6 +13,7 @@
             --text-muted: #666666;
             --border-color: #cccccc;
             --border-focus: #4a90e2;
+            --danger-color: #e74c3c;
         }
 
         body {
@@ -113,7 +114,6 @@
             font-size: 1.1em;
         }
 
-        /* Grid para las valoraciones */
         .ratings-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -135,13 +135,17 @@
             color: #555;
         }
 
-        /* Sección de extras */
+        /* Sección de extras dinámicos */
         .extra-row {
             display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-columns: 1fr 2fr 1fr auto;
             gap: 15px;
             margin-bottom: 15px;
             align-items: start;
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #eee;
         }
 
         @media (max-width: 600px) {
@@ -150,7 +154,37 @@
             }
         }
 
-        /* Radios y condicionales (Puntos de mejora) */
+        .btn-add {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 15px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-add:hover {
+            background-color: #27ae60;
+        }
+
+        .btn-remove {
+            background-color: var(--danger-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            height: 40px; /* Alineado con los inputs */
+        }
+
+        .btn-remove:hover {
+            background-color: #c0392b;
+        }
+
         .radio-group-container {
             margin-bottom: 25px;
             padding: 15px;
@@ -173,7 +207,6 @@
             cursor: pointer;
         }
 
-        /* Magia CSS para mostrar inputs ocultos */
         .conditional-input {
             display: none;
             margin-top: 15px;
@@ -230,7 +263,20 @@
                 Debes poner tu nombre real para poder saber quien eres, sino no podre contabilizar tu voto, por eso pongo el apartado A.K.A para que puedas ponerte de nombre la tonteria que quieras.
             </div>
             <label for="nombreReal">Nombre Real</label>
-            <input type="text" id="nombreReal" name="nombre_real" required placeholder="Tu nombre verdadero">
+            <select id="nombreReal" name="nombre_real" required>
+                <option value="">Selecciona tu nombre...</option>
+                <option value="Alex">Alex</option>
+                <option value="Alonso">Alonso</option>
+                <option value="Coiduras">Coiduras</option>
+                <option value="Diego">Diego</option>
+                <option value="Diez">Diez</option>
+                <option value="Gonzalo">Gonzalo</option>
+                <option value="Hector">Hector</option>
+                <option value="Hugo">Hugo</option>
+                <option value="Mario">Mario</option>
+                <option value="Pepe">Pepe</option>
+                <option value="Zurita">Zurita</option>
+            </select>
 
             <label for="aka">A.K.A</label>
             <input type="text" id="aka" name="aka" required placeholder="Tu apodo o tontería que quieras">
@@ -258,77 +304,77 @@
 
             <h3>5. Categoría GEMIDOS</h3>
             <div class="ratings-grid">
-                <div class="rating-item"><label>Alex</label><input type="number" name="cat5_alex" class="cat-5" min="1" max="100" required></div>
-                <div class="rating-item"><label>Alonso</label><input type="number" name="cat5_alonso" class="cat-5" min="1" max="100" required></div>
-                <div class="rating-item"><label>Coiduras</label><input type="number" name="cat5_coiduras" class="cat-5" min="1" max="100" required></div>
-                <div class="rating-item"><label>Diego</label><input type="number" name="cat5_diego" class="cat-5" min="1" max="100" required></div>
-                <div class="rating-item"><label>Diez</label><input type="number" name="cat5_diez" class="cat-5" min="1" max="100" required></div>
-                <div class="rating-item"><label>Gonzalo</label><input type="number" name="cat5_gonzalo" class="cat-5" min="1" max="100" required></div>
-                <div class="rating-item"><label>Hector</label><input type="number" name="cat5_hector" class="cat-5" min="1" max="100" required></div>
-                <div class="rating-item"><label>Hugo</label><input type="number" name="cat5_hugo" class="cat-5" min="1" max="100" required></div>
-                <div class="rating-item"><label>Mario</label><input type="number" name="cat5_mario" class="cat-5" min="1" max="100" required></div>
-                <div class="rating-item"><label>Pepe</label><input type="number" name="cat5_pepe" class="cat-5" min="1" max="100" required></div>
-                <div class="rating-item"><label>Zurita</label><input type="number" name="cat5_zurita" class="cat-5" min="1" max="100" required></div>
+                <div class="rating-item"><label>Alex</label><input type="number" name="cat5_alex" class="cat-5 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Alonso</label><input type="number" name="cat5_alonso" class="cat-5 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Coiduras</label><input type="number" name="cat5_coiduras" class="cat-5 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diego</label><input type="number" name="cat5_diego" class="cat-5 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diez</label><input type="number" name="cat5_diez" class="cat-5 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Gonzalo</label><input type="number" name="cat5_gonzalo" class="cat-5 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hector</label><input type="number" name="cat5_hector" class="cat-5 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hugo</label><input type="number" name="cat5_hugo" class="cat-5 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Mario</label><input type="number" name="cat5_mario" class="cat-5 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Pepe</label><input type="number" name="cat5_pepe" class="cat-5 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Zurita</label><input type="number" name="cat5_zurita" class="cat-5 number-limit" min="1" max="100" required></div>
             </div>
 
             <h3>4. Categoría INSINUACIONES</h3>
             <div class="ratings-grid">
-                <div class="rating-item"><label>Alex</label><input type="number" name="cat4_alex" class="cat-4" min="1" max="100" required></div>
-                <div class="rating-item"><label>Alonso</label><input type="number" name="cat4_alonso" class="cat-4" min="1" max="100" required></div>
-                <div class="rating-item"><label>Coiduras</label><input type="number" name="cat4_coiduras" class="cat-4" min="1" max="100" required></div>
-                <div class="rating-item"><label>Diego</label><input type="number" name="cat4_diego" class="cat-4" min="1" max="100" required></div>
-                <div class="rating-item"><label>Diez</label><input type="number" name="cat4_diez" class="cat-4" min="1" max="100" required></div>
-                <div class="rating-item"><label>Gonzalo</label><input type="number" name="cat4_gonzalo" class="cat-4" min="1" max="100" required></div>
-                <div class="rating-item"><label>Hector</label><input type="number" name="cat4_hector" class="cat-4" min="1" max="100" required></div>
-                <div class="rating-item"><label>Hugo</label><input type="number" name="cat4_hugo" class="cat-4" min="1" max="100" required></div>
-                <div class="rating-item"><label>Mario</label><input type="number" name="cat4_mario" class="cat-4" min="1" max="100" required></div>
-                <div class="rating-item"><label>Pepe</label><input type="number" name="cat4_pepe" class="cat-4" min="1" max="100" required></div>
-                <div class="rating-item"><label>Zurita</label><input type="number" name="cat4_zurita" class="cat-4" min="1" max="100" required></div>
+                <div class="rating-item"><label>Alex</label><input type="number" name="cat4_alex" class="cat-4 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Alonso</label><input type="number" name="cat4_alonso" class="cat-4 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Coiduras</label><input type="number" name="cat4_coiduras" class="cat-4 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diego</label><input type="number" name="cat4_diego" class="cat-4 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diez</label><input type="number" name="cat4_diez" class="cat-4 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Gonzalo</label><input type="number" name="cat4_gonzalo" class="cat-4 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hector</label><input type="number" name="cat4_hector" class="cat-4 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hugo</label><input type="number" name="cat4_hugo" class="cat-4 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Mario</label><input type="number" name="cat4_mario" class="cat-4 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Pepe</label><input type="number" name="cat4_pepe" class="cat-4 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Zurita</label><input type="number" name="cat4_zurita" class="cat-4 number-limit" min="1" max="100" required></div>
             </div>
 
             <h3>3. Categoría RESISTENCIA</h3>
             <div class="ratings-grid">
-                <div class="rating-item"><label>Alex</label><input type="number" name="cat3_alex" class="cat-3" min="1" max="100" required></div>
-                <div class="rating-item"><label>Alonso</label><input type="number" name="cat3_alonso" class="cat-3" min="1" max="100" required></div>
-                <div class="rating-item"><label>Coiduras</label><input type="number" name="cat3_coiduras" class="cat-3" min="1" max="100" required></div>
-                <div class="rating-item"><label>Diego</label><input type="number" name="cat3_diego" class="cat-3" min="1" max="100" required></div>
-                <div class="rating-item"><label>Diez</label><input type="number" name="cat3_diez" class="cat-3" min="1" max="100" required></div>
-                <div class="rating-item"><label>Gonzalo</label><input type="number" name="cat3_gonzalo" class="cat-3" min="1" max="100" required></div>
-                <div class="rating-item"><label>Hector</label><input type="number" name="cat3_hector" class="cat-3" min="1" max="100" required></div>
-                <div class="rating-item"><label>Hugo</label><input type="number" name="cat3_hugo" class="cat-3" min="1" max="100" required></div>
-                <div class="rating-item"><label>Mario</label><input type="number" name="cat3_mario" class="cat-3" min="1" max="100" required></div>
-                <div class="rating-item"><label>Pepe</label><input type="number" name="cat3_pepe" class="cat-3" min="1" max="100" required></div>
-                <div class="rating-item"><label>Zurita</label><input type="number" name="cat3_zurita" class="cat-3" min="1" max="100" required></div>
+                <div class="rating-item"><label>Alex</label><input type="number" name="cat3_alex" class="cat-3 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Alonso</label><input type="number" name="cat3_alonso" class="cat-3 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Coiduras</label><input type="number" name="cat3_coiduras" class="cat-3 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diego</label><input type="number" name="cat3_diego" class="cat-3 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diez</label><input type="number" name="cat3_diez" class="cat-3 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Gonzalo</label><input type="number" name="cat3_gonzalo" class="cat-3 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hector</label><input type="number" name="cat3_hector" class="cat-3 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hugo</label><input type="number" name="cat3_hugo" class="cat-3 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Mario</label><input type="number" name="cat3_mario" class="cat-3 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Pepe</label><input type="number" name="cat3_pepe" class="cat-3 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Zurita</label><input type="number" name="cat3_zurita" class="cat-3 number-limit" min="1" max="100" required></div>
             </div>
 
             <h3>2. Categoría VIOLACIONES</h3>
             <div class="ratings-grid">
-                <div class="rating-item"><label>Alex</label><input type="number" name="cat2_alex" class="cat-2" min="1" max="100" required></div>
-                <div class="rating-item"><label>Alonso</label><input type="number" name="cat2_alonso" class="cat-2" min="1" max="100" required></div>
-                <div class="rating-item"><label>Coiduras</label><input type="number" name="cat2_coiduras" class="cat-2" min="1" max="100" required></div>
-                <div class="rating-item"><label>Diego</label><input type="number" name="cat2_diego" class="cat-2" min="1" max="100" required></div>
-                <div class="rating-item"><label>Diez</label><input type="number" name="cat2_diez" class="cat-2" min="1" max="100" required></div>
-                <div class="rating-item"><label>Gonzalo</label><input type="number" name="cat2_gonzalo" class="cat-2" min="1" max="100" required></div>
-                <div class="rating-item"><label>Hector</label><input type="number" name="cat2_hector" class="cat-2" min="1" max="100" required></div>
-                <div class="rating-item"><label>Hugo</label><input type="number" name="cat2_hugo" class="cat-2" min="1" max="100" required></div>
-                <div class="rating-item"><label>Mario</label><input type="number" name="cat2_mario" class="cat-2" min="1" max="100" required></div>
-                <div class="rating-item"><label>Pepe</label><input type="number" name="cat2_pepe" class="cat-2" min="1" max="100" required></div>
-                <div class="rating-item"><label>Zurita</label><input type="number" name="cat2_zurita" class="cat-2" min="1" max="100" required></div>
+                <div class="rating-item"><label>Alex</label><input type="number" name="cat2_alex" class="cat-2 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Alonso</label><input type="number" name="cat2_alonso" class="cat-2 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Coiduras</label><input type="number" name="cat2_coiduras" class="cat-2 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diego</label><input type="number" name="cat2_diego" class="cat-2 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diez</label><input type="number" name="cat2_diez" class="cat-2 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Gonzalo</label><input type="number" name="cat2_gonzalo" class="cat-2 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hector</label><input type="number" name="cat2_hector" class="cat-2 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hugo</label><input type="number" name="cat2_hugo" class="cat-2 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Mario</label><input type="number" name="cat2_mario" class="cat-2 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Pepe</label><input type="number" name="cat2_pepe" class="cat-2 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Zurita</label><input type="number" name="cat2_zurita" class="cat-2 number-limit" min="1" max="100" required></div>
             </div>
 
             <h3>1. Categoría AFECTO FISICO</h3>
             <div class="ratings-grid">
-                <div class="rating-item"><label>Alex</label><input type="number" name="cat1_alex" class="cat-1" min="1" max="100" required></div>
-                <div class="rating-item"><label>Alonso</label><input type="number" name="cat1_alonso" class="cat-1" min="1" max="100" required></div>
-                <div class="rating-item"><label>Coiduras</label><input type="number" name="cat1_coiduras" class="cat-1" min="1" max="100" required></div>
-                <div class="rating-item"><label>Diego</label><input type="number" name="cat1_diego" class="cat-1" min="1" max="100" required></div>
-                <div class="rating-item"><label>Diez</label><input type="number" name="cat1_diez" class="cat-1" min="1" max="100" required></div>
-                <div class="rating-item"><label>Gonzalo</label><input type="number" name="cat1_gonzalo" class="cat-1" min="1" max="100" required></div>
-                <div class="rating-item"><label>Hector</label><input type="number" name="cat1_hector" class="cat-1" min="1" max="100" required></div>
-                <div class="rating-item"><label>Hugo</label><input type="number" name="cat1_hugo" class="cat-1" min="1" max="100" required></div>
-                <div class="rating-item"><label>Mario</label><input type="number" name="cat1_mario" class="cat-1" min="1" max="100" required></div>
-                <div class="rating-item"><label>Pepe</label><input type="number" name="cat1_pepe" class="cat-1" min="1" max="100" required></div>
-                <div class="rating-item"><label>Zurita</label><input type="number" name="cat1_zurita" class="cat-1" min="1" max="100" required></div>
+                <div class="rating-item"><label>Alex</label><input type="number" name="cat1_alex" class="cat-1 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Alonso</label><input type="number" name="cat1_alonso" class="cat-1 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Coiduras</label><input type="number" name="cat1_coiduras" class="cat-1 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diego</label><input type="number" name="cat1_diego" class="cat-1 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diez</label><input type="number" name="cat1_diez" class="cat-1 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Gonzalo</label><input type="number" name="cat1_gonzalo" class="cat-1 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hector</label><input type="number" name="cat1_hector" class="cat-1 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hugo</label><input type="number" name="cat1_hugo" class="cat-1 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Mario</label><input type="number" name="cat1_mario" class="cat-1 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Pepe</label><input type="number" name="cat1_pepe" class="cat-1 number-limit" min="1" max="100" required></div>
+                <div class="rating-item"><label>Zurita</label><input type="number" name="cat1_zurita" class="cat-1 number-limit" min="1" max="100" required></div>
             </div>
         </div>
 
@@ -338,62 +384,10 @@
             <h2>6. EXTRAS (Opcional)</h2>
             <p>En esta sección final deberás describir una actitud extra no mencionada en las categorías anteriores de los participantes que creas oportunos, y darles una valoración del 1-10 en función de cómo de grave crees que es.</p>
             
-            <div class="extra-row">
-                <select name="extra1_nombre">
-                    <option value="">Selecciona participante...</option>
-                    <option value="Alex">Alex</option>
-                    <option value="Alonso">Alonso</option>
-                    <option value="Coiduras">Coiduras</option>
-                    <option value="Diego">Diego</option>
-                    <option value="Diez">Diez</option>
-                    <option value="Gonzalo">Gonzalo</option>
-                    <option value="Hector">Hector</option>
-                    <option value="Hugo">Hugo</option>
-                    <option value="Mario">Mario</option>
-                    <option value="Pepe">Pepe</option>
-                    <option value="Zurita">Zurita</option>
-                </select>
-                <input type="text" name="extra1_actitud" placeholder="Describe la actitud...">
-                <input type="number" name="extra1_valoracion" min="1" max="10" placeholder="Gravedad (1-10)">
-            </div>
-
-            <div class="extra-row">
-                <select name="extra2_nombre">
-                    <option value="">Selecciona participante...</option>
-                    <option value="Alex">Alex</option>
-                    <option value="Alonso">Alonso</option>
-                    <option value="Coiduras">Coiduras</option>
-                    <option value="Diego">Diego</option>
-                    <option value="Diez">Diez</option>
-                    <option value="Gonzalo">Gonzalo</option>
-                    <option value="Hector">Hector</option>
-                    <option value="Hugo">Hugo</option>
-                    <option value="Mario">Mario</option>
-                    <option value="Pepe">Pepe</option>
-                    <option value="Zurita">Zurita</option>
-                </select>
-                <input type="text" name="extra2_actitud" placeholder="Describe la actitud...">
-                <input type="number" name="extra2_valoracion" min="1" max="10" placeholder="Gravedad (1-10)">
-            </div>
-
-            <div class="extra-row">
-                <select name="extra3_nombre">
-                    <option value="">Selecciona participante...</option>
-                    <option value="Alex">Alex</option>
-                    <option value="Alonso">Alonso</option>
-                    <option value="Coiduras">Coiduras</option>
-                    <option value="Diego">Diego</option>
-                    <option value="Diez">Diez</option>
-                    <option value="Gonzalo">Gonzalo</option>
-                    <option value="Hector">Hector</option>
-                    <option value="Hugo">Hugo</option>
-                    <option value="Mario">Mario</option>
-                    <option value="Pepe">Pepe</option>
-                    <option value="Zurita">Zurita</option>
-                </select>
-                <input type="text" name="extra3_actitud" placeholder="Describe la actitud...">
-                <input type="number" name="extra3_valoracion" min="1" max="10" placeholder="Gravedad (1-10)">
-            </div>
+            <button type="button" class="btn-add" id="add-extra-btn">+ Añadir participante extra</button>
+            
+            <div id="extras-container">
+                </div>
         </div>
 
         <hr class="section-separator">
@@ -475,6 +469,52 @@
 </div>
 
 <script>
+    // 1. Limitar los números al escribirlos (no permite saltarse los límites de min y max)
+    document.addEventListener('input', function(e) {
+        if (e.target.type === 'number') {
+            let max = parseInt(e.target.getAttribute('max'));
+            let min = parseInt(e.target.getAttribute('min'));
+            let val = parseInt(e.target.value);
+
+            if (!isNaN(val)) {
+                if (val > max) e.target.value = max;
+                if (val < min && e.target.value !== '') e.target.value = min;
+            }
+        }
+    });
+
+    // 2. Lógica para añadir filas extras dinámicamente
+    const btnAddExtra = document.getElementById('add-extra-btn');
+    const extrasContainer = document.getElementById('extras-container');
+    let extraCount = 0;
+
+    btnAddExtra.addEventListener('click', function() {
+        extraCount++;
+        const row = document.createElement('div');
+        row.className = 'extra-row';
+        row.innerHTML = `
+            <select name="extra${extraCount}_nombre" required>
+                <option value="">Selecciona participante...</option>
+                <option value="Alex">Alex</option>
+                <option value="Alonso">Alonso</option>
+                <option value="Coiduras">Coiduras</option>
+                <option value="Diego">Diego</option>
+                <option value="Diez">Diez</option>
+                <option value="Gonzalo">Gonzalo</option>
+                <option value="Hector">Hector</option>
+                <option value="Hugo">Hugo</option>
+                <option value="Mario">Mario</option>
+                <option value="Pepe">Pepe</option>
+                <option value="Zurita">Zurita</option>
+            </select>
+            <input type="text" name="extra${extraCount}_actitud" placeholder="Describe la actitud..." required>
+            <input type="number" name="extra${extraCount}_valoracion" min="1" max="10" placeholder="Gravedad (1-10)" required>
+            <button type="button" class="btn-remove" onclick="this.parentElement.remove()">Eliminar</button>
+        `;
+        extrasContainer.appendChild(row);
+    });
+
+    // 3. Validación al enviar para que no haya números repetidos en la misma categoría
     document.getElementById('rankingForm').addEventListener('submit', function(e) {
         const categorias = ['cat-5', 'cat-4', 'cat-3', 'cat-2', 'cat-1'];
         
