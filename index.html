@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking Homosexual Mensual de Marzo</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --bg-color: #f4f7f6;
+            --form-bg: #ffffff;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --border-color: #cccccc;
+            --border-focus: #4a90e2;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--form-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .section-separator {
+            border: 0;
+            height: 2px;
+            background: #e1e8ed;
+            margin: 40px 0;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section h2 {
+            font-size: 1.3em;
+            color: var(--text-main);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            background-color: #eaf3fc;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #31708f;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], 
+        input[type="number"], 
+        select, 
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus, 
+        input[type="number"]:focus, 
+        select:focus, 
+        textarea:focus {
+            border-color: var(--border-focus);
+            outline: none;
+        }
+
+        .criteria-list {
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            padding: 15px 25px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 1.1em;
+        }
+
+        /* Grid para las valoraciones */
+        .ratings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        .rating-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rating-item label {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        /* Sección de extras */
+        .extra-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: start;
+        }
+
+        @media (max-width: 600px) {
+            .extra-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Radios y condicionales (Puntos de mejora) */
+        .radio-group-container {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #fafafa;
+            border-radius: 8px;
+        }
+
+        .radio-options {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .radio-options label {
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        /* Magia CSS para mostrar inputs ocultos */
+        .conditional-input {
+            display: none;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        input[value="si"]:checked ~ .conditional-input,
+        input[value="opcion1"]:checked ~ .conditional-input,
+        input[value="opcion2"]:checked ~ .conditional-input {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        .submit-btn:hover {
+            background-color: #357abd;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>RANKING HOMOSEXUAL MENSUAL DE MARZO</h1>
+        <p class="subtitle">Se acaba el mes, y con el llega la actualización del ranking homosexual mensual de Fifalitas.</p>
+    </header>
+
+    <form name="ranking-homosexual-mensual" method="POST" data-netlify="true" id="rankingForm">
+        
+        <div class="form-section">
+            <h2>1. Identificación</h2>
+            <div class="info-box">
+                Debes poner tu nombre real para poder saber quien eres, sino no podre contabilizar tu voto, por eso pongo el apartado A.K.A para que puedas ponerte de nombre la tonteria que quieras.
+            </div>
+            <label for="nombreReal">Nombre Real</label>
+            <input type="text" id="nombreReal" name="nombre_real" required placeholder="Tu nombre verdadero">
+
+            <label for="aka">A.K.A</label>
+            <input type="text" id="aka" name="aka" required placeholder="Tu apodo o tontería que quieras">
+        </div>
+
+        <hr class="section-separator">
+
+        <div class="form-section">
+            <h2>2. Criterios de Calificación</h2>
+            <p>ORDEN DE CRITERIOS DE CALIFICACION</p>
+            <div class="criteria-list">
+                5. GEMIDOS<br>
+                4. INSINUACIONES<br>
+                3. RESISTENCIA<br>
+                2. VIOLACINES<br>
+                1. AFECTO FISICO
+            </div>
+        </div>
+
+        <hr class="section-separator">
+
+        <div class="form-section">
+            <h2>3. Valoraciones (del 5 al 1)</h2>
+            <p>Valora a cada participante del <strong>1 al 100</strong> en cada categoría. <em>Atención: Ningún participante puede tener la misma puntuación dentro de una misma categoría.</em></p>
+
+            <h3>5. Categoría GEMIDOS</h3>
+            <div class="ratings-grid">
+                <div class="rating-item"><label>Alex</label><input type="number" name="cat5_alex" class="cat-5" min="1" max="100" required></div>
+                <div class="rating-item"><label>Alonso</label><input type="number" name="cat5_alonso" class="cat-5" min="1" max="100" required></div>
+                <div class="rating-item"><label>Coiduras</label><input type="number" name="cat5_coiduras" class="cat-5" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diego</label><input type="number" name="cat5_diego" class="cat-5" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diez</label><input type="number" name="cat5_diez" class="cat-5" min="1" max="100" required></div>
+                <div class="rating-item"><label>Gonzalo</label><input type="number" name="cat5_gonzalo" class="cat-5" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hector</label><input type="number" name="cat5_hector" class="cat-5" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hugo</label><input type="number" name="cat5_hugo" class="cat-5" min="1" max="100" required></div>
+                <div class="rating-item"><label>Mario</label><input type="number" name="cat5_mario" class="cat-5" min="1" max="100" required></div>
+                <div class="rating-item"><label>Pepe</label><input type="number" name="cat5_pepe" class="cat-5" min="1" max="100" required></div>
+                <div class="rating-item"><label>Zurita</label><input type="number" name="cat5_zurita" class="cat-5" min="1" max="100" required></div>
+            </div>
+
+            <h3>4. Categoría INSINUACIONES</h3>
+            <div class="ratings-grid">
+                <div class="rating-item"><label>Alex</label><input type="number" name="cat4_alex" class="cat-4" min="1" max="100" required></div>
+                <div class="rating-item"><label>Alonso</label><input type="number" name="cat4_alonso" class="cat-4" min="1" max="100" required></div>
+                <div class="rating-item"><label>Coiduras</label><input type="number" name="cat4_coiduras" class="cat-4" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diego</label><input type="number" name="cat4_diego" class="cat-4" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diez</label><input type="number" name="cat4_diez" class="cat-4" min="1" max="100" required></div>
+                <div class="rating-item"><label>Gonzalo</label><input type="number" name="cat4_gonzalo" class="cat-4" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hector</label><input type="number" name="cat4_hector" class="cat-4" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hugo</label><input type="number" name="cat4_hugo" class="cat-4" min="1" max="100" required></div>
+                <div class="rating-item"><label>Mario</label><input type="number" name="cat4_mario" class="cat-4" min="1" max="100" required></div>
+                <div class="rating-item"><label>Pepe</label><input type="number" name="cat4_pepe" class="cat-4" min="1" max="100" required></div>
+                <div class="rating-item"><label>Zurita</label><input type="number" name="cat4_zurita" class="cat-4" min="1" max="100" required></div>
+            </div>
+
+            <h3>3. Categoría RESISTENCIA</h3>
+            <div class="ratings-grid">
+                <div class="rating-item"><label>Alex</label><input type="number" name="cat3_alex" class="cat-3" min="1" max="100" required></div>
+                <div class="rating-item"><label>Alonso</label><input type="number" name="cat3_alonso" class="cat-3" min="1" max="100" required></div>
+                <div class="rating-item"><label>Coiduras</label><input type="number" name="cat3_coiduras" class="cat-3" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diego</label><input type="number" name="cat3_diego" class="cat-3" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diez</label><input type="number" name="cat3_diez" class="cat-3" min="1" max="100" required></div>
+                <div class="rating-item"><label>Gonzalo</label><input type="number" name="cat3_gonzalo" class="cat-3" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hector</label><input type="number" name="cat3_hector" class="cat-3" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hugo</label><input type="number" name="cat3_hugo" class="cat-3" min="1" max="100" required></div>
+                <div class="rating-item"><label>Mario</label><input type="number" name="cat3_mario" class="cat-3" min="1" max="100" required></div>
+                <div class="rating-item"><label>Pepe</label><input type="number" name="cat3_pepe" class="cat-3" min="1" max="100" required></div>
+                <div class="rating-item"><label>Zurita</label><input type="number" name="cat3_zurita" class="cat-3" min="1" max="100" required></div>
+            </div>
+
+            <h3>2. Categoría VIOLACIONES</h3>
+            <div class="ratings-grid">
+                <div class="rating-item"><label>Alex</label><input type="number" name="cat2_alex" class="cat-2" min="1" max="100" required></div>
+                <div class="rating-item"><label>Alonso</label><input type="number" name="cat2_alonso" class="cat-2" min="1" max="100" required></div>
+                <div class="rating-item"><label>Coiduras</label><input type="number" name="cat2_coiduras" class="cat-2" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diego</label><input type="number" name="cat2_diego" class="cat-2" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diez</label><input type="number" name="cat2_diez" class="cat-2" min="1" max="100" required></div>
+                <div class="rating-item"><label>Gonzalo</label><input type="number" name="cat2_gonzalo" class="cat-2" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hector</label><input type="number" name="cat2_hector" class="cat-2" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hugo</label><input type="number" name="cat2_hugo" class="cat-2" min="1" max="100" required></div>
+                <div class="rating-item"><label>Mario</label><input type="number" name="cat2_mario" class="cat-2" min="1" max="100" required></div>
+                <div class="rating-item"><label>Pepe</label><input type="number" name="cat2_pepe" class="cat-2" min="1" max="100" required></div>
+                <div class="rating-item"><label>Zurita</label><input type="number" name="cat2_zurita" class="cat-2" min="1" max="100" required></div>
+            </div>
+
+            <h3>1. Categoría AFECTO FISICO</h3>
+            <div class="ratings-grid">
+                <div class="rating-item"><label>Alex</label><input type="number" name="cat1_alex" class="cat-1" min="1" max="100" required></div>
+                <div class="rating-item"><label>Alonso</label><input type="number" name="cat1_alonso" class="cat-1" min="1" max="100" required></div>
+                <div class="rating-item"><label>Coiduras</label><input type="number" name="cat1_coiduras" class="cat-1" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diego</label><input type="number" name="cat1_diego" class="cat-1" min="1" max="100" required></div>
+                <div class="rating-item"><label>Diez</label><input type="number" name="cat1_diez" class="cat-1" min="1" max="100" required></div>
+                <div class="rating-item"><label>Gonzalo</label><input type="number" name="cat1_gonzalo" class="cat-1" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hector</label><input type="number" name="cat1_hector" class="cat-1" min="1" max="100" required></div>
+                <div class="rating-item"><label>Hugo</label><input type="number" name="cat1_hugo" class="cat-1" min="1" max="100" required></div>
+                <div class="rating-item"><label>Mario</label><input type="number" name="cat1_mario" class="cat-1" min="1" max="100" required></div>
+                <div class="rating-item"><label>Pepe</label><input type="number" name="cat1_pepe" class="cat-1" min="1" max="100" required></div>
+                <div class="rating-item"><label>Zurita</label><input type="number" name="cat1_zurita" class="cat-1" min="1" max="100" required></div>
+            </div>
+        </div>
+
+        <hr class="section-separator">
+
+        <div class="form-section">
+            <h2>6. EXTRAS (Opcional)</h2>
+            <p>En esta sección final deberás describir una actitud extra no mencionada en las categorías anteriores de los participantes que creas oportunos, y darles una valoración del 1-10 en función de cómo de grave crees que es.</p>
+            
+            <div class="extra-row">
+                <select name="extra1_nombre">
+                    <option value="">Selecciona participante...</option>
+                    <option value="Alex">Alex</option>
+                    <option value="Alonso">Alonso</option>
+                    <option value="Coiduras">Coiduras</option>
+                    <option value="Diego">Diego</option>
+                    <option value="Diez">Diez</option>
+                    <option value="Gonzalo">Gonzalo</option>
+                    <option value="Hector">Hector</option>
+                    <option value="Hugo">Hugo</option>
+                    <option value="Mario">Mario</option>
+                    <option value="Pepe">Pepe</option>
+                    <option value="Zurita">Zurita</option>
+                </select>
+                <input type="text" name="extra1_actitud" placeholder="Describe la actitud...">
+                <input type="number" name="extra1_valoracion" min="1" max="10" placeholder="Gravedad (1-10)">
+            </div>
+
+            <div class="extra-row">
+                <select name="extra2_nombre">
+                    <option value="">Selecciona participante...</option>
+                    <option value="Alex">Alex</option>
+                    <option value="Alonso">Alonso</option>
+                    <option value="Coiduras">Coiduras</option>
+                    <option value="Diego">Diego</option>
+                    <option value="Diez">Diez</option>
+                    <option value="Gonzalo">Gonzalo</option>
+                    <option value="Hector">Hector</option>
+                    <option value="Hugo">Hugo</option>
+                    <option value="Mario">Mario</option>
+                    <option value="Pepe">Pepe</option>
+                    <option value="Zurita">Zurita</option>
+                </select>
+                <input type="text" name="extra2_actitud" placeholder="Describe la actitud...">
+                <input type="number" name="extra2_valoracion" min="1" max="10" placeholder="Gravedad (1-10)">
+            </div>
+
+            <div class="extra-row">
+                <select name="extra3_nombre">
+                    <option value="">Selecciona participante...</option>
+                    <option value="Alex">Alex</option>
+                    <option value="Alonso">Alonso</option>
+                    <option value="Coiduras">Coiduras</option>
+                    <option value="Diego">Diego</option>
+                    <option value="Diez">Diez</option>
+                    <option value="Gonzalo">Gonzalo</option>
+                    <option value="Hector">Hector</option>
+                    <option value="Hugo">Hugo</option>
+                    <option value="Mario">Mario</option>
+                    <option value="Pepe">Pepe</option>
+                    <option value="Zurita">Zurita</option>
+                </select>
+                <input type="text" name="extra3_actitud" placeholder="Describe la actitud...">
+                <input type="number" name="extra3_valoracion" min="1" max="10" placeholder="Gravedad (1-10)">
+            </div>
+        </div>
+
+        <hr class="section-separator">
+
+        <div class="form-section">
+            <h2>PUNTOS DE MEJORA</h2>
+            <p>Se presentan las siguientes sugerencias para mejorar en el próximo mes el ranking.</p>
+
+            <div class="radio-group-container">
+                <label>1. ¿Añadirías algún criterio de calificación nuevo?</label>
+                <div class="radio-options">
+                    <input type="radio" id="q1_si" name="q1" value="si" required>
+                    <label for="q1_si">Sí</label>
+                    
+                    <input type="radio" id="q1_no" name="q1" value="no">
+                    <label for="q1_no">No</label>
+                    
+                    <input type="radio" id="q1_igual" name="q1" value="medaigual">
+                    <label for="q1_igual">Me da igual</label>
+                    
+                    <input type="text" name="q1_cual" class="conditional-input" placeholder="¿Cuál añadirías?">
+                </div>
+            </div>
+
+            <div class="radio-group-container">
+                <label>2. ¿Modificarías la importancia de los criterios de calificación?</label>
+                <div class="radio-options">
+                    <input type="radio" id="q2_si" name="q2" value="si" required>
+                    <label for="q2_si">Sí</label>
+                    
+                    <input type="radio" id="q2_no" name="q2" value="no">
+                    <label for="q2_no">No</label>
+                    
+                    <input type="radio" id="q2_igual" name="q2" value="medaigual">
+                    <label for="q2_igual">Me da igual</label>
+                    
+                    <input type="text" name="q2_cual" class="conditional-input" placeholder="¿Cuál modificarías y cómo?">
+                </div>
+            </div>
+
+            <div class="radio-group-container">
+                <label>3. ¿Eliminarías algún criterio de calificación?</label>
+                <div class="radio-options">
+                    <input type="radio" id="q3_si" name="q3" value="si" required>
+                    <label for="q3_si">Sí</label>
+                    
+                    <input type="radio" id="q3_no" name="q3" value="no">
+                    <label for="q3_no">No</label>
+                    
+                    <input type="radio" id="q3_igual" name="q3" value="medaigual">
+                    <label for="q3_igual">Me da igual</label>
+                    
+                    <input type="text" name="q3_cual" class="conditional-input" placeholder="¿Cuál eliminarías?">
+                </div>
+            </div>
+
+            <div class="radio-group-container">
+                <label>4. ¿Prefieres puntuar del 1 al 100 o ordenar de más a menos a las personas?</label>
+                <div class="radio-options">
+                    <input type="radio" id="q4_op1" name="q4" value="opcion1" required>
+                    <label for="q4_op1">Opción 1: Puntuar del 1 al 100</label>
+                    
+                    <input type="radio" id="q4_op2" name="q4" value="opcion2">
+                    <label for="q4_op2">Opción 2: Ordenar de más a menos</label>
+                    
+                    <input type="radio" id="q4_igual" name="q4" value="medaigual">
+                    <label for="q4_igual">Me da igual</label>
+                </div>
+            </div>
+
+            <div class="radio-group-container">
+                <label>5. Escribe alguna otra sugerencia o mejora que harías al ranking (Opcional)</label>
+                <textarea name="sugerencias_extra" rows="4" placeholder="Tus sugerencias aquí..."></textarea>
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Enviar Votación</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('rankingForm').addEventListener('submit', function(e) {
+        const categorias = ['cat-5', 'cat-4', 'cat-3', 'cat-2', 'cat-1'];
+        
+        for (let clase of categorias) {
+            const inputs = document.querySelectorAll('.' + clase);
+            const valores = new Set();
+            
+            for (let input of inputs) {
+                if (input.value !== '') {
+                    if (valores.has(input.value)) {
+                        e.preventDefault(); // Detiene el envío
+                        alert('Error: Has repetido la puntuación "' + input.value + '" en la categoría ' + clase.replace('cat-', '') + '. Recuerda que nadie puede tener el mismo valor por categoría.');
+                        input.focus();
+                        return;
+                    }
+                    valores.add(input.value);
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
