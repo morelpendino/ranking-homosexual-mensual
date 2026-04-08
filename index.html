@@ -83,9 +83,9 @@
             margin-bottom: 5px;
         }
 
-        input[type="text"], 
-        input[type="number"], 
-        select, 
+        input[type="text"],
+        input[type="number"],
+        select,
         textarea {
             width: 100%;
             padding: 10px;
@@ -97,9 +97,9 @@
             font-family: inherit;
         }
 
-        input[type="text"]:focus, 
-        input[type="number"]:focus, 
-        select:focus, 
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus,
         textarea:focus {
             border-color: var(--border-focus);
             outline: none;
@@ -135,7 +135,6 @@
             color: #555;
         }
 
-        /* Sección de extras dinámicos */
         .extra-row {
             display: grid;
             grid-template-columns: 1fr 2fr 1fr auto;
@@ -178,7 +177,7 @@
             border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
-            height: 40px; /* Alineado con los inputs */
+            height: 40px;
         }
 
         .btn-remove:hover {
@@ -245,6 +244,10 @@
         .submit-btn:active {
             transform: scale(0.98);
         }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -252,16 +255,31 @@
 <div class="container">
     <header>
         <h1>RANKING HOMOSEXUAL MENSUAL DE MARZO</h1>
-        <p class="subtitle">Se acaba el mes, y con el llega la actualización del ranking homosexual mensual de Fifalitas.</p>
+        <p class="subtitle">Se acaba el mes, y con él llega la actualización del ranking homosexual mensual de Fifalitas.</p>
     </header>
 
-    <form name="ranking-homosexual-mensual" method="POST" data-netlify="true" id="rankingForm">
-        
+    <form
+        name="ranking-homosexual-mensual"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/gracias.html"
+        id="rankingForm"
+    >
+        <input type="hidden" name="form-name" value="ranking-homosexual-mensual">
+
+        <p class="hidden">
+            <label>No rellenes esto si eres humano:
+                <input name="bot-field">
+            </label>
+        </p>
+
         <div class="form-section">
             <h2>1. Identificación</h2>
             <div class="info-box">
-                Debes poner tu nombre real para poder saber quien eres, sino no podre contabilizar tu voto, por eso pongo el apartado A.K.A para que puedas ponerte de nombre la tonteria que quieras.
+                Debes poner tu nombre real para poder saber quién eres; si no, no podré contabilizar tu voto. Por eso pongo el apartado A.K.A para que puedas ponerte de nombre la tontería que quieras.
             </div>
+
             <label for="nombreReal">Nombre Real</label>
             <select id="nombreReal" name="nombre_real" required>
                 <option value="">Selecciona tu nombre...</option>
@@ -286,13 +304,13 @@
 
         <div class="form-section">
             <h2>2. Criterios de Calificación</h2>
-            <p>ORDEN DE CRITERIOS DE CALIFICACION</p>
+            <p>ORDEN DE CRITERIOS DE CALIFICACIÓN</p>
             <div class="criteria-list">
                 5. GEMIDOS<br>
                 4. INSINUACIONES<br>
                 3. RESISTENCIA<br>
                 2. VIOLACIONES<br>
-                1. AFECTO FISICO
+                1. AFECTO FÍSICO
             </div>
         </div>
 
@@ -300,7 +318,7 @@
 
         <div class="form-section">
             <h2>3. Valoraciones (del 5 al 1)</h2>
-            <p>Valora a cada participante del <strong>1 al 100</strong> en cada categoría. <em>Atención: Ningún participante puede tener la misma puntuación dentro de una misma categoría.</em></p>
+            <p>Valora a cada participante del <strong>1 al 100</strong> en cada categoría. <em>Atención: ningún participante puede tener la misma puntuación dentro de una misma categoría.</em></p>
 
             <h3>5. Categoría GEMIDOS</h3>
             <div class="ratings-grid">
@@ -362,7 +380,7 @@
                 <div class="rating-item"><label>Zurita</label><input type="number" name="cat2_zurita" class="cat-2 number-limit" min="1" max="100" required></div>
             </div>
 
-            <h3>1. Categoría AFECTO FISICO</h3>
+            <h3>1. Categoría AFECTO FÍSICO</h3>
             <div class="ratings-grid">
                 <div class="rating-item"><label>Alex</label><input type="number" name="cat1_alex" class="cat-1 number-limit" min="1" max="100" required></div>
                 <div class="rating-item"><label>Alonso</label><input type="number" name="cat1_alonso" class="cat-1 number-limit" min="1" max="100" required></div>
@@ -383,11 +401,10 @@
         <div class="form-section">
             <h2>6. EXTRAS (Opcional)</h2>
             <p>En esta sección final deberás describir una actitud extra no mencionada en las categorías anteriores de los participantes que creas oportunos, y darles una valoración del 1-10 en función de cómo de grave crees que es.</p>
-            
+
             <button type="button" class="btn-add" id="add-extra-btn">+ Añadir participante extra</button>
-            
-            <div id="extras-container">
-                </div>
+
+            <div id="extras-container"></div>
         </div>
 
         <hr class="section-separator">
@@ -401,13 +418,13 @@
                 <div class="radio-options">
                     <input type="radio" id="q1_si" name="q1" value="si" required>
                     <label for="q1_si">Sí</label>
-                    
+
                     <input type="radio" id="q1_no" name="q1" value="no">
                     <label for="q1_no">No</label>
-                    
+
                     <input type="radio" id="q1_igual" name="q1" value="medaigual">
                     <label for="q1_igual">Me da igual</label>
-                    
+
                     <input type="text" name="q1_cual" class="conditional-input" placeholder="¿Cuál añadirías?">
                 </div>
             </div>
@@ -417,13 +434,13 @@
                 <div class="radio-options">
                     <input type="radio" id="q2_si" name="q2" value="si" required>
                     <label for="q2_si">Sí</label>
-                    
+
                     <input type="radio" id="q2_no" name="q2" value="no">
                     <label for="q2_no">No</label>
-                    
+
                     <input type="radio" id="q2_igual" name="q2" value="medaigual">
                     <label for="q2_igual">Me da igual</label>
-                    
+
                     <input type="text" name="q2_cual" class="conditional-input" placeholder="¿Cuál modificarías y cómo?">
                 </div>
             </div>
@@ -433,13 +450,13 @@
                 <div class="radio-options">
                     <input type="radio" id="q3_si" name="q3" value="si" required>
                     <label for="q3_si">Sí</label>
-                    
+
                     <input type="radio" id="q3_no" name="q3" value="no">
                     <label for="q3_no">No</label>
-                    
+
                     <input type="radio" id="q3_igual" name="q3" value="medaigual">
                     <label for="q3_igual">Me da igual</label>
-                    
+
                     <input type="text" name="q3_cual" class="conditional-input" placeholder="¿Cuál eliminarías?">
                 </div>
             </div>
@@ -449,10 +466,10 @@
                 <div class="radio-options">
                     <input type="radio" id="q4_op1" name="q4" value="opcion1" required>
                     <label for="q4_op1">Opción 1: Puntuar del 1 al 100</label>
-                    
+
                     <input type="radio" id="q4_op2" name="q4" value="opcion2">
                     <label for="q4_op2">Opción 2: Ordenar de más a menos</label>
-                    
+
                     <input type="radio" id="q4_igual" name="q4" value="medaigual">
                     <label for="q4_igual">Me da igual</label>
                 </div>
@@ -469,7 +486,6 @@
 </div>
 
 <script>
-    // 1. Limitar los números al escribirlos (no permite saltarse los límites de min y max)
     document.addEventListener('input', function(e) {
         if (e.target.type === 'number') {
             let max = parseInt(e.target.getAttribute('max'));
@@ -483,7 +499,6 @@
         }
     });
 
-    // 2. Lógica para añadir filas extras dinámicamente
     const btnAddExtra = document.getElementById('add-extra-btn');
     const extrasContainer = document.getElementById('extras-container');
     let extraCount = 0;
@@ -514,18 +529,17 @@
         extrasContainer.appendChild(row);
     });
 
-    // 3. Validación al enviar para que no haya números repetidos en la misma categoría
     document.getElementById('rankingForm').addEventListener('submit', function(e) {
         const categorias = ['cat-5', 'cat-4', 'cat-3', 'cat-2', 'cat-1'];
-        
+
         for (let clase of categorias) {
             const inputs = document.querySelectorAll('.' + clase);
             const valores = new Set();
-            
+
             for (let input of inputs) {
                 if (input.value !== '') {
                     if (valores.has(input.value)) {
-                        e.preventDefault(); // Detiene el envío
+                        e.preventDefault();
                         alert('Error: Has repetido la puntuación "' + input.value + '" en la categoría ' + clase.replace('cat-', '') + '. Recuerda que nadie puede tener el mismo valor por categoría.');
                         input.focus();
                         return;
