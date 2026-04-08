@@ -263,6 +263,7 @@
         method="POST"
         data-netlify="true"
         netlify-honeypot="bot-field"
+        action="/gracias.html"
         id="rankingForm"
     >
         <input type="hidden" name="form-name" value="ranking-homosexual-mensual">
@@ -485,10 +486,6 @@
 </div>
 
 <script>
-    function encodeFormData(formData) {
-        return new URLSearchParams(formData).toString();
-    }
-
     document.addEventListener('input', function(e) {
         if (e.target.type === 'number') {
             let max = parseInt(e.target.getAttribute('max'));
@@ -532,9 +529,7 @@
         extrasContainer.appendChild(row);
     });
 
-    document.getElementById('rankingForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-
+    document.getElementById('rankingForm').addEventListener('submit', function(e) {
         const categorias = ['cat-5', 'cat-4', 'cat-3', 'cat-2', 'cat-1'];
 
         for (let clase of categorias) {
@@ -544,6 +539,7 @@
             for (let input of inputs) {
                 if (input.value !== '') {
                     if (valores.has(input.value)) {
+                        e.preventDefault();
                         alert('Error: Has repetido la puntuación "' + input.value + '" en la categoría ' + clase.replace('cat-', '') + '. Recuerda que nadie puede tener el mismo valor por categoría.');
                         input.focus();
                         return;
@@ -551,28 +547,6 @@
                     valores.add(input.value);
                 }
             }
-        }
-
-        const form = e.target;
-        const formData = new FormData(form);
-
-        try {
-            const response = await fetch("/", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: encodeFormData(formData)
-            });
-
-            if (!response.ok) {
-                throw new Error("Error al enviar el formulario");
-            }
-
-            window.location.href = "/gracias.html";
-        } catch (error) {
-            alert("No se pudo enviar el formulario. Inténtalo otra vez.");
-            console.error(error);
         }
     });
 </script>
